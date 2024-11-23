@@ -1,0 +1,36 @@
+<mat-card class="example-card">
+  <form [formGroup]="myForm" (ngSubmit)="submit()">
+    <mat-card-header>
+      <mat-card-title>Create New Post</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <input mat-input placeholder="Post title" id="title" formControlName="title" />
+      <div *ngIf="title?.invalid && (title?.dirty || title?.touched)">
+        <p class="error" *ngIf="title?.errors?.['maxlength']">
+          Title can be max 20 characters long.
+        </p>
+      </div>
+
+      <input mat-input
+        placeholder="Post content"
+        id="content"
+        formControlName="content"
+      />
+      <div *ngIf="content?.invalid && (content?.dirty || content?.touched)">
+        <p class="error" *ngIf="content?.errors?.['minlength']">
+          Name must be at least 3 characters long.
+        </p>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="submit()"
+      >
+        Submit
+      </button>
+      <button (click)="cancel()" mat-raised-button color="primary">Cancel</button>
+    </mat-card-actions>
+  </form>
+</mat-card>

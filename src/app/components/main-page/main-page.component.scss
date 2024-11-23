@@ -1,0 +1,24 @@
+:host {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+app-post {
+  margin: 10px;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: row;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+
+  button {
+    /* position: fixed;
+    bottom: 30px;
+    right: 30px; */
+    margin: 10px;
+  }
+}

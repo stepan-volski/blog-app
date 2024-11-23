@@ -1,0 +1,52 @@
+<app-post *ngFor="let post of pagenatedPosts$ | async" [data]="post"></app-post>
+
+<div class="button-container">
+  <button
+    (click)="paginationService.prevPage()"
+    mat-mini-fab
+    color="basic"
+    matTooltip="Prev page"
+    [disabled]="!this.paginationService.isAllowedScrollPrevPage()"
+  >
+    <mat-icon>arrow_left</mat-icon>
+  </button>
+
+  <div>{{ paginationService.currentPage }}</div>
+
+  <button
+    (click)="paginationService.nextPage()"
+    mat-mini-fab
+    color="basic"
+    matTooltip="Next Page"
+    [disabled]="!this.paginationService.isAllowedScrollNextPage()"
+  >
+    <mat-icon>arrow_right</mat-icon>
+  </button>
+
+  <button
+    (click)="createPost()"
+    mat-mini-fab
+    color="accent"
+    matTooltip="Create post"
+  >
+    <mat-icon>add</mat-icon>
+  </button>
+  <button
+    *ngIf="!this.auth.isLoggedIn"
+    (click)="login()"
+    mat-mini-fab
+    color="base"
+    matTooltip="Log in"
+  >
+    <mat-icon>login</mat-icon>
+  </button>
+  <button
+    *ngIf="this.auth.isLoggedIn"
+    (click)="logout()"
+    mat-mini-fab
+    color="base"
+    matTooltip="Log out"
+  >
+    <mat-icon>logout</mat-icon>
+  </button>
+</div>
